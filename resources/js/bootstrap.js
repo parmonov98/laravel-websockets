@@ -28,13 +28,6 @@ window.Echo = new Echo({
     wsHost: window.location.hostname,
     wsPort: 6001,
     authEndpoint: import.meta.env.VITE_PUSHER_HOST + '/broadcasting/auth',
-    // auth: {
-    //     headers: {
-    //         Authorization: "Bearer " + localStorage.getItem('XSRF-TOKEN'),
-    //         Accept: "application/json",
-
-    //     }
-    // },
     authorizer: (channel, options) => {
         return {
             authorize: (socketId, callback) => {
@@ -59,63 +52,6 @@ window.Echo = new Echo({
             }
         };
     },
-    // authorizer: (channel, options) => {
-    //     return {
-    //         authorize: (socketId, callback) => {
-    //             fetch('/api/broadcasting/auth', {
-    //                 method: 'POST',
-    //                 headers: {
-    //                     'Content-Type': 'application/json',
-    //                     Accept: "application/json",
-    //                     Authorization: 'Bearer ' + 'yJpdiI6IkFHYkxyUlNZdGE5VlhZYllaMC9naUE9PSIsInZhbHVlIjoiaUl6NlIvU0dTS2VwSzhPeDQzS0tWeTNSUXl2bm4xeGRsS0g3RGZaRU5ITXZaWTh6bGNOWHFST2Y3Yy94ZUVWQzdlcVZmUmgwam5MMDFZWUwvaDkwd1d2b3cxNDdkSEtSL0U4Szl1UUtzcWdCNkh6UXpyTzZFWjdmYUY5czJ6VWsiLCJtYWMiOiI0MmI4NTk5MDM5MmQwYTI5MTMzZTU3NzBhMDYwZTU0ZDUyOTY5NTRkNDU3ZDVkZTlhNjJlNWVlYmE0MDUyZTUwIiwidGFnIjoiIn0%3D',
-    //                 },
-    //                 body: JSON.stringify({
-    //                     socket_id: socketId,
-    //                     channel_name: channel.name
-    //                 })
-    //             })
-    //                 .then(response => response.json())
-    //                 .then(data => {
-    //                     callback(false, data);
-    //                 })
-    //                 .catch((error) => {
-    //                     callback(true, error);
-    //                 });
-    //         }
-    //     };
-    // },
-    // authorizer: (channel, options) => {
-    //     return {
-    //         authorize: (socketId, callback) => {
-    //             axios.post('/api/broadcasting/auth', {
-    //                 socket_id: socketId,
-    //                 channel_name: channel.name
-    //             })
-    //                 .then(response => {
-    //                     callback(null, response.data);
-    //                 })
-    //                 .catch(error => {
-    //                     callback(error);
-    //                 });
-    //         }
-    //     };
-    // },
-    // authorizer: (channel, options) => {
-    //     return {
-    //         authorize: (socketId, callback) => {
-    //             axios.post('/api/broadcasting/auth', {
-    //                 socket_id: socketId,
-    //                 channel_name: channel.name
-    //             })
-    //                 .then(response => {
-    //                     callback(null, response.data);
-    //                 })
-    //                 .catch(error => {
-    //                     callback(error);
-    //                 });
-    //         }
-    //     };
-    // },
 });
 
 

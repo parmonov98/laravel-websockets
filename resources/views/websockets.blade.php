@@ -19,10 +19,10 @@
 
     <script>
         window.addEventListener('DOMContentLoaded', () =>{
-            // Echo.channel('podcasts')
-            // .listen('PodcastProcessed', (event) => {
-            //     console.log(event);
-            // });
+            Echo.channel('podcasts')
+            .listen('PodcastProcessed', (event) => {
+                console.log(event);
+            });
 
             Echo.private('podcasts')
             .listen('PrivatePodcastProcessed', (event) => {
