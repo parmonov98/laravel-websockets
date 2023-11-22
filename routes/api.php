@@ -1,7 +1,13 @@
 <?php
 
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\TokenController;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Broadcast;
+use Illuminate\Validation\ValidationException;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +20,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+Broadcast::routes(['middleware' => ['auth:sanctum']]);
+
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('/auth/register', [AuthController::class, 'register']);
+Route::post('/sanctum/token', [TokenController::class, 'createToken']);

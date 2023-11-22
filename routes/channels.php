@@ -22,7 +22,7 @@ Broadcast::channel('podcasts', function () {
 
 Broadcast::channel('private-podcasts', function () {
     return true;
-}, ['middleware' => ['auth:api']]);
+}, ['middleware' => ['auth:sanctum']]);
 
 
 // Broadcast::channel('App.Models.User.{id}', function ($user, $id) {
